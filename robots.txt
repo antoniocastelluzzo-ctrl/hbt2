@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://${{ github.repository_owner }}.github.io/hbt2/sitemap.xml
+
+# Crawl-delay per evitare sovraccarico
+Crawl-delay: 1
+
+# Blocca file non necessari
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /node_modules/
+Disallow: /*.log
+Disallow: /README.md
+Disallow: /.gitignore
