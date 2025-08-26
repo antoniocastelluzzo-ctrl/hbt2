@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Modulo Richiesta | HBT</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Stili aggiuntivi solo per il form richieste */
+    .richiesta-form-container {
+      max-width: 480px;
+      margin: 40px auto 60px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 16px #c2c2c2;
+      padding: 32px 24px 24px 24px;
+    }
+    .richiesta-form-container h2 {
+      text-align: center;
+      color: #0072ce;
+    }
+    label { display:block; margin-top:18px; font-weight:500; color:#222; }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 4px;
+      border: 1px solid #bbb;
+      font-size: 15px;
+      box-sizing: border-box;
+      background: #f8faff;
+      transition: border 0.2s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #0072ce;
+      outline: none;
+    }
+    button[type="submit"] {
+      margin-top: 28px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      background: #0072ce;
+      color: #fff;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button[type="submit"]:hover {
+      background: #005a9e;
+    }
+    #form-response {
+      margin-top: 22px;
+      text-align: center;
+      font-weight: 500;
+      min-height: 24px;
+    }
+    .success { color: #219e1a; }
+    .error { color: #e03c3c; }
+    @media (max-width: 600px) {
+      .richiesta-form-container { padding: 12px 6px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="header-bar">
+      <a href="index.html" class="logo-link">
+        <img src="logo.png" alt="Logo HBT" class="logo-img">
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="richiesta.html" class="active">Richiesta</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+          <!-- aggiungi altre voci se presenti -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN FORM -->
+  <main>
+    <div class="richiesta-form-container">
+      <h2>Invio richiesta</h2>
+      <form id="request-form" autocomplete="off">
+        <label for="name">Nome e Cognome</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="tipo">Tipo richiesta</label>
+        <select name="tipo" id="tipo" required>
+          <option value="">Seleziona...</option>
+          <option value="Informazione">Informazione</option>
+          <option value="Assistenza tecnica">Assistenza tecnica</option>
+          <option value="Segnalazione">Segnalazione</option>
+          <option value="Altro">Altro</option>
+        </select>
+
+        <label for="message">Richiesta</label>
+        <textarea name="message" id="message" rows="6" required></textarea>
+
+        <button type="submit">Invia richiesta</button>
+        <div id="form-response"></div>
+      </form>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bar">
+      <p>&copy; 2025 HBT - Tutti i diritti riservati</p>
+    </div>
+  </footer>
+
+  <!-- Script invio dati -->
+  <script>
+    document.getElementById('request-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const responseDiv = document.getElementById('form-response');
+      responseDiv.textContent = 'Invio in corso...';
+      responseDiv.className = '';
+      try {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbzgPEulHEAwLVridlKtorp3JW2B7WB4W7al9YkkGUY/dev', {
+          method: 'POST',
+          body: data
+        });
+        if (response.ok) {
+          responseDiv.textContent = 'Richiesta inviata e salvata con successo!';
+          responseDiv.className = 'success';
+          form.reset();
+        } else {
+          responseDiv.textContent = 'Si è verificato un errore durante l\'invio.';
+          responseDiv.className = 'error';
+        }
+      } catch (error) {
+        responseDiv.textContent = 'Errore di rete o servizio non disponibile.';
+        responseDiv.className = 'error';
+      }
+    });
+  </script>
+</body>
+</html>
