@@ -158,20 +158,23 @@
 
     <section id="contatti" class="contact">
       <h2>Contattaci</h2>
-      <form id="contactForm" autocomplete="off">
-  <input type="text" name="name" placeholder="Nome e Cognome" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <select name="tipo" required>
-    <option value="">Tipo richiesta...</option>
-    <option value="Informazione">Informazione</option>
-    <option value="Assistenza tecnica">Assistenza tecnica</option>
-    <option value="Segnalazione">Segnalazione</option>
-    <option value="Altro">Altro</option>
-  </select>
-  <textarea name="message" placeholder="Scrivi il tuo messaggio" required></textarea>
-  <button type="submit">Invia</button>
-  <div id="form-response"></div>
-</form>
+             <form id="contactForm" autocomplete="off">
+         <input type="text" name="name" placeholder="Nome e Cognome" required>
+         <input type="email" name="email" placeholder="Email" required>
+         <input type="tel" name="telefono" placeholder="Numero di telefono" required>
+         <select name="tipo" required>
+           <option value="">Tipo richiesta...</option>
+           <option value="Informazione">Informazione</option>
+           <option value="Assistenza tecnica">Assistenza tecnica</option>
+           <option value="Segnalazione">Segnalazione</option>
+           <option value="Consulenza energetica">Consulenza energetica</option>
+           <option value="Preventivo">Preventivo</option>
+           <option value="Altro">Altro</option>
+         </select>
+         <textarea name="message" placeholder="Scrivi il tuo messaggio" required></textarea>
+         <button type="submit">Invia richiesta</button>
+         <div id="form-response"></div>
+       </form>
 <script>
   // Rimuovo tutti gli event listener esistenti
   const form = document.getElementById('contactForm');
@@ -189,53 +192,71 @@
     responseDiv.textContent = 'Elaborazione in corso...';
     responseDiv.className = '';
     
-    try {
-      // Prendo i valori direttamente dagli elementi
-      const name = newForm.querySelector('input[name="name"]').value.trim();
-      const email = newForm.querySelector('input[name="email"]').value.trim();
-      const tipo = newForm.querySelector('select[name="tipo"]').value.trim();
-      const message = newForm.querySelector('textarea[name="message"]').value.trim();
-      const timestamp = new Date().toISOString();
-      
-      console.log('Dati form:', { name, email, tipo, message });
-      
-      if (!name || !email || !tipo || !message) {
-        throw new Error('Tutti i campi sono obbligatori');
-      }
-      
-      const content = [
-        '----- RICHIESTA HBT -----',
-        `Data/Ora: ${timestamp}`,
-        `Nome e Cognome: ${name}`,
-        `Email: ${email}`,
-        `Tipo richiesta: ${tipo}`,
-        'Richiesta:',
-        message,
-        '--------------------------'
-      ].join('\n');
-      
-      // Creo e scarico il file
-      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'test.txt';
-      link.style.display = 'none';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
-      
-      responseDiv.textContent = '✅ Dati salvati con successo in test.txt';
-      responseDiv.className = 'success';
-      newForm.reset();
-      console.log('✅ Form elaborato con successo');
-      
-    } catch (error) {
-      console.error('❌ Errore:', error);
-      responseDiv.textContent = '❌ Errore: ' + error.message;
-      responseDiv.className = 'error';
-    }
+         try {
+       // Prendo i valori direttamente dagli elementi
+       const name = newForm.querySelector('input[name="name"]').value.trim();
+       const email = newForm.querySelector('input[name="email"]').value.trim();
+       const telefono = newForm.querySelector('input[name="telefono"]').value.trim();
+       const tipo = newForm.querySelector('select[name="tipo"]').value.trim();
+       const message = newForm.querySelector('textarea[name="message"]').value.trim();
+       const timestamp = new Date().toISOString();
+       
+       console.log('Dati form:', { name, email, telefono, tipo, message });
+       
+       if (!name || !email || !telefono || !tipo || !message) {
+         throw new Error('Tutti i campi sono obbligatori');
+       }
+       
+       const content = [
+         '==========================================',
+         '           RICHIESTA HBTECH',
+         '==========================================',
+         '',
+         `📅 Data e Ora: ${new Date().toLocaleString('it-IT')}`,
+         `👤 Nome e Cognome: ${name}`,
+         `📧 Email: ${email}`,
+         `📞 Telefono: ${telefono}`,
+         `🏷️  Tipo Richiesta: ${tipo}`,
+         '',
+         '📝 Messaggio:',
+         message,
+         '',
+         '==========================================',
+         'HBTech Engineering & SRLs',
+         'Servizi di riqualificazione energetica',
+         '=========================================='
+       ].join('\n');
+       
+       // Creo e scarico il file
+       const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+       const url = URL.createObjectURL(blob);
+       const link = document.createElement('a');
+       link.href = url;
+       link.download = `richiesta_hbtech_${new Date().toISOString().split('T')[0]}.txt`;
+       link.style.display = 'none';
+       document.body.appendChild(link);
+       link.click();
+       document.body.removeChild(link);
+       URL.revokeObjectURL(url);
+       
+       // Mostro messaggio di ringraziamento professionale
+       responseDiv.innerHTML = `
+         <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; margin-top: 20px;">
+           <h3 style="color: #27ae60; margin-bottom: 15px;">🎉 Grazie per la tua richiesta!</h3>
+           <p style="color: #333; margin-bottom: 10px;">Abbiamo ricevuto la tua richiesta e la stiamo elaborando.</p>
+           <p style="color: #666; font-size: 14px;">Ti contatteremo al più presto per fornirti tutte le informazioni richieste.</p>
+           <p style="color: #27ae60; font-weight: bold; margin-top: 15px;">HBTech Engineering & SRLs</p>
+         </div>
+       `;
+       responseDiv.className = 'success';
+       newForm.reset();
+       console.log('✅ Form elaborato con successo');
+       
+     } catch (error) {
+       console.error('❌ Errore:', error);
+       responseDiv.textContent = '❌ Errore: ' + error.message;
+       responseDiv.className = 'error';
+     }
     
     return false;
   });

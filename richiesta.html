@@ -91,12 +91,17 @@
         <label for="email">Email</label>
         <input type="email" name="email" id="email" required>
 
+        <label for="telefono">Numero di telefono</label>
+        <input type="tel" name="telefono" id="telefono" required>
+
         <label for="tipo">Tipo richiesta</label>
         <select name="tipo" id="tipo" required>
           <option value="">Seleziona...</option>
           <option value="Informazione">Informazione</option>
           <option value="Assistenza tecnica">Assistenza tecnica</option>
           <option value="Segnalazione">Segnalazione</option>
+          <option value="Consulenza energetica">Consulenza energetica</option>
+          <option value="Preventivo">Preventivo</option>
           <option value="Altro">Altro</option>
         </select>
 
@@ -129,21 +134,34 @@
 
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
+      const telefono = document.getElementById('telefono').value.trim();
       const tipo = document.getElementById('tipo').value.trim();
       const message = document.getElementById('message').value.trim();
-      const timestamp = new Date().toISOString();
 
-      console.log('Form data:', { name, email, tipo, message });
+      console.log('Form data:', { name, email, telefono, tipo, message });
+
+      if (!name || !email || !telefono || !tipo || !message) {
+        throw new Error('Tutti i campi sono obbligatori');
+      }
 
       const content = [
-        '----- RICHIESTA HBT -----',
-        `Data/Ora: ${timestamp}`,
-        `Nome e Cognome: ${name}`,
-        `Email: ${email}`,
-        `Tipo richiesta: ${tipo}`,
-        'Richiesta:',
+        '==========================================',
+        '           RICHIESTA HBTECH',
+        '==========================================',
+        '',
+        `📅 Data e Ora: ${new Date().toLocaleString('it-IT')}`,
+        `👤 Nome e Cognome: ${name}`,
+        `📧 Email: ${email}`,
+        `📞 Telefono: ${telefono}`,
+        `🏷️  Tipo Richiesta: ${tipo}`,
+        '',
+        '📝 Messaggio:',
         message,
-        '--------------------------'
+        '',
+        '==========================================',
+        'HBTech Engineering & SRLs',
+        'Servizi di riqualificazione energetica',
+        '=========================================='
       ].join('\n');
 
       try {
@@ -151,19 +169,28 @@
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = 'test.txt';
+        link.download = `richiesta_hbtech_${new Date().toISOString().split('T')[0]}.txt`;
+        link.style.display = 'none';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
 
-        responseDiv.textContent = 'Dati salvati in test.txt';
+        // Mostro messaggio di ringraziamento professionale
+        responseDiv.innerHTML = `
+          <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; margin-top: 20px;">
+            <h3 style="color: #27ae60; margin-bottom: 15px;">🎉 Grazie per la tua richiesta!</h3>
+            <p style="color: #333; margin-bottom: 10px;">Abbiamo ricevuto la tua richiesta e la stiamo elaborando.</p>
+            <p style="color: #666; font-size: 14px;">Ti contatteremo al più presto per fornirti tutte le informazioni richieste.</p>
+            <p style="color: #27ae60; font-weight: bold; margin-top: 15px;">HBTech Engineering & SRLs</p>
+          </div>
+        `;
         responseDiv.className = 'success';
         form.reset();
-        console.log('Form processed successfully');
+        console.log('✅ Form elaborato con successo');
       } catch (error) {
-        console.error('Error processing form:', error);
-        responseDiv.textContent = 'Errore durante il salvataggio: ' + error.message;
+        console.error('❌ Errore:', error);
+        responseDiv.textContent = '❌ Errore: ' + error.message;
         responseDiv.className = 'error';
       }
       
