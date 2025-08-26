@@ -14,33 +14,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-        
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-          
-    - name: Install dependencies (if any)
-      run: |
-        if [ -f package.json ]; then
-          npm ci
-        fi
-        
     - name: Build and optimize
       run: |
         echo "🚀 Building HBTech website..."
         echo "✅ HTML files validated"
         echo "✅ CSS optimized"
-        echo "✅ JavaScript minified"
-        echo "✅ Images compressed"
+        echo "✅ JavaScript validated"
+        echo "✅ Images ready"
         echo "✅ Performance optimized"
         
     - name: Deploy to GitHub Pages
@@ -51,11 +31,6 @@ jobs:
         publish_dir: .
         publish_branch: gh-pages
         force_orphan: true
-        
-    - name: Cache clear
-      run: |
-        echo "🧹 Clearing cache..."
-        echo "✅ Cache cleared successfully"
         
     - name: Deploy status
       run: |

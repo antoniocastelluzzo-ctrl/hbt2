@@ -4,13 +4,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Jekyll
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-vendor/
-
 # Runtime data
 pids
 *.pid
@@ -117,7 +110,3 @@ build/
 
 # Local development files
 *.local
-
-# Jekyll specific
-.bundle/
-Gemfile.lock
