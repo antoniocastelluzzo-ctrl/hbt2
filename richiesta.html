@@ -116,34 +116,43 @@
     </div>
   </footer>
 
-  <!-- Script invio dati via Google Apps Script -->
+  <!-- Script salvataggio locale in file di test -->
   <script>
-    // INSERISCI QUI IL TUO URL WEB APP GOOGLE APPS SCRIPT
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwY2foeg2gK46DLd3eH3ss55tw8-3UilwB1Eg8p4vXTWDw6SAqMD8PPCAuqU8CDXIM/exec";
-    document.getElementById('request-form').addEventListener('submit', async function(e) {
+    document.getElementById('request-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const form = e.target;
-      const data = new FormData(form);
       const responseDiv = document.getElementById('form-response');
-      responseDiv.textContent = 'Invio in corso...';
-      responseDiv.className = '';
-      try {
-        const response = await fetch(scriptURL, {
-          method: 'POST',
-          body: data
-        });
-        if (response.ok) {
-          responseDiv.textContent = 'Richiesta inviata con successo!';
-          responseDiv.className = 'success';
-          form.reset();
-        } else {
-          responseDiv.textContent = 'Errore durante l\'invio.';
-          responseDiv.className = 'error';
-        }
-      } catch (error) {
-        responseDiv.textContent = 'Errore di rete o servizio non disponibile.';
-        responseDiv.className = 'error';
-      }
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const tipo = document.getElementById('tipo').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const timestamp = new Date().toISOString();
+
+      const content = [
+        '----- RICHIESTA HBT -----',
+        `Data/Ora: ${timestamp}`,
+        `Nome e Cognome: ${name}`,
+        `Email: ${email}`,
+        `Tipo richiesta: ${tipo}`,
+        'Richiesta:',
+        message,
+        '--------------------------'
+      ].join('\n');
+
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'test.txt';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      responseDiv.textContent = 'Dati salvati in test.txt';
+      responseDiv.className = 'success';
+      form.reset();
     });
   </script>
 </body>
