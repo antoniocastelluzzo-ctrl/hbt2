@@ -8,6 +8,41 @@
   <title>HBTech - 
   Riqualificazione Energetica</title>
   <link rel="stylesheet" href="styles_Version6.css">
+  <style>
+    /* Cookie Consent Banner Styles */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(20,20,20,0.96);
+      color: #fff;
+      padding: 20px 10px 15px 10px;
+      z-index: 10000;
+      text-align: center;
+      font-size: 1rem;
+      display: none;
+    }
+    #cookie-banner button {
+      margin-left: 12px;
+      background: #27ae60;
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    #cookie-banner button:hover {
+      background: #219150;
+    }
+    #cookie-banner a {
+      color: #27ae60;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -40,7 +75,7 @@
     <section class="intro">
       <h2>Perché scegliere la riqualificazione energetica?</h2>
       <p>
-        HBTech offre servizi professionali integrati chiavi in mano  per la riqualificazione energetica per edifici civili e industriali: sostituzione e ottimizzazione di impianti termici, isolamento dell’involucro edilizio, installazione di impianti fotovoltaici e sistemi di accumulo. Progettiamo soluzioni di building automation e domotica per la gestione intelligente dei consumi. Offriamo consulenza energetica, gestione pratiche per incentivi e servizi professionali di ingegneria, dalla diagnosi iniziale al collaudo. Il nostro team garantisce qualità, risparmio e sostenibilità in ogni fase del progetto.
+        HBTech offre servizi professionali integrati chiavi in mano  per la riqualificazione energetica per edifici civili e industriali: sostituzione e ottimizzazione di impianti termici, isolamento [...]
       </p>
     </section>
 
@@ -116,7 +151,7 @@
     </div>
   </div>
   <p>
-    HBTech ti supporta nell’individuare tutte le opportunità di incentivo applicabili al tuo caso, seguendo la gestione delle pratiche e l’accesso alle agevolazioni più vantaggiose a livello nazionale, regionale e locale.
+    HBTech ti supporta nell’individuare tutte le opportunità di incentivo applicabili al tuo caso, seguendo la gestione delle pratiche e l’accesso alle agevolazioni più vantaggiose a livello naz[...]
   </p>
 </section>
    
@@ -136,5 +171,24 @@
   <footer>
     <p>&copy; 2025 HBTech - Riqualificazione energetica | P.IVA: 00000000000</p>
   </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-banner">
+    Utilizziamo cookie tecnici e, previo consenso, cookie di terze parti per migliorare l’esperienza utente. Proseguendo la navigazione o cliccando “Accetta”, acconsenti all’uso dei cookie. 
+    Leggi la nostra <a href="privacy.html" target="_blank">Privacy Policy</a>.
+    <button id="accept-cookies">Accetta</button>
+  </div>
+  <script>
+    // Show cookie banner if not previously accepted
+    window.addEventListener('DOMContentLoaded', function() {
+      if (!localStorage.getItem('privacyAccepted')) {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }
+      document.getElementById('accept-cookies').onclick = function() {
+        localStorage.setItem('privacyAccepted', 'yes');
+        document.getElementById('cookie-banner').style.display = 'none';
+      };
+    });
+  </script>
 </body>
 </html>
