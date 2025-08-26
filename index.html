@@ -173,58 +173,74 @@
   <div id="form-response"></div>
 </form>
 <script>
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    console.log('Form submit intercepted');
+  // Rimuovo tutti gli event listener esistenti
+  const form = document.getElementById('contactForm');
+  const newForm = form.cloneNode(true);
+  form.parentNode.replaceChild(newForm, form);
+  
+  // Aggiungo il nuovo event listener
+  newForm.addEventListener('submit', function(e) {
+    console.log('=== FORM SUBMIT INTERCEPTED ===');
     e.preventDefault();
     e.stopPropagation();
     e.stopImmediatePropagation();
     
-    const form = e.target;
     const responseDiv = document.getElementById('form-response');
-
-    const formData = new FormData(form);
-    const name = (formData.get('name') || '').toString().trim();
-    const email = (formData.get('email') || '').toString().trim();
-    const tipo = (formData.get('tipo') || '').toString().trim();
-    const message = (formData.get('message') || '').toString().trim();
-    const timestamp = new Date().toISOString();
-
-    console.log('Form data:', { name, email, tipo, message });
-
-    const content = [
-      '----- RICHIESTA HBT -----',
-      `Data/Ora: ${timestamp}`,
-      `Nome e Cognome: ${name}`,
-      `Email: ${email}`,
-      `Tipo richiesta: ${tipo}`,
-      'Richiesta:',
-      message,
-      '--------------------------'
-    ].join('\n');
-
+    responseDiv.textContent = 'Elaborazione in corso...';
+    responseDiv.className = '';
+    
     try {
+      // Prendo i valori direttamente dagli elementi
+      const name = newForm.querySelector('input[name="name"]').value.trim();
+      const email = newForm.querySelector('input[name="email"]').value.trim();
+      const tipo = newForm.querySelector('select[name="tipo"]').value.trim();
+      const message = newForm.querySelector('textarea[name="message"]').value.trim();
+      const timestamp = new Date().toISOString();
+      
+      console.log('Dati form:', { name, email, tipo, message });
+      
+      if (!name || !email || !tipo || !message) {
+        throw new Error('Tutti i campi sono obbligatori');
+      }
+      
+      const content = [
+        '----- RICHIESTA HBT -----',
+        `Data/Ora: ${timestamp}`,
+        `Nome e Cognome: ${name}`,
+        `Email: ${email}`,
+        `Tipo richiesta: ${tipo}`,
+        'Richiesta:',
+        message,
+        '--------------------------'
+      ].join('\n');
+      
+      // Creo e scarico il file
       const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
       link.download = 'test.txt';
+      link.style.display = 'none';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
-
-      responseDiv.textContent = 'Dati salvati in test.txt';
+      
+      responseDiv.textContent = '✅ Dati salvati con successo in test.txt';
       responseDiv.className = 'success';
-      form.reset();
-      console.log('Form processed successfully');
+      newForm.reset();
+      console.log('✅ Form elaborato con successo');
+      
     } catch (error) {
-      console.error('Error processing form:', error);
-      responseDiv.textContent = 'Errore durante il salvataggio: ' + error.message;
+      console.error('❌ Errore:', error);
+      responseDiv.textContent = '❌ Errore: ' + error.message;
       responseDiv.className = 'error';
     }
     
     return false;
   });
+  
+  console.log('✅ Nuovo event listener installato per il form');
 </script>
       <p>Email: <a href="mailto:info@hbtech.it">info@hbtech.it</a></p>
       <p>Telefono: <a href="tel:+390000000000">+39 000 000 0000</a></p>
