@@ -1,0 +1,63 @@
+<!-- Form Contatti Estesi - HBT2 -->
+<form id="contattiForm" style="max-width:500px;margin:auto;">
+  <h2>Richiedi Informazioni</h2>
+  <label>Nome e Cognome*<br>
+    <input type="text" name="nome" required>
+  </label><br><br>
+  <label>Email*<br>
+    <input type="email" name="email" required>
+  </label><br><br>
+  <label>Telefono<br>
+    <input type="tel" name="telefono">
+  </label><br><br>
+  <label>Azienda/Organizzazione<br>
+    <input type="text" name="azienda">
+  </label><br><br>
+  <label>Servizi di Interesse*<br>
+    <select name="servizi" multiple required>
+      <option value="Consulenza">Consulenza</option>
+      <option value="Sviluppo Software">Sviluppo Software</option>
+      <option value="Formazione">Formazione</option>
+      <option value="Supporto Tecnico">Supporto Tecnico</option>
+    </select>
+    <small>Per selezioni multiple: Ctrl+Click</small>
+  </label><br><br>
+  <label>Messaggio/Richiesta<br>
+    <textarea name="messaggio" rows="4"></textarea>
+  </label><br><br>
+  <label>
+    <input type="checkbox" name="privacy" required>
+    Acconsento al trattamento dei dati secondo la <a href="/privacy" target="_blank">privacy policy</a>*
+  </label><br><br>
+  <button type="submit">Invia</button>
+  <div id="formStatus"></div>
+</form>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbyg-jqMJYfPSXUSJdNbqFV5aoAhfhRcwgTdsLQT02sg7UOIg1ia4VpLAdXcGa7TQMmw/exec";
+const form = document.getElementById('contattiForm');
+const status = document.getElementById('formStatus');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  status.textContent = "Invio in corso…";
+  const data = new FormData(form);
+
+  // Serializza i servizi multipli in stringa
+  if (data.getAll('servizi').length > 1) {
+    data.set('servizi', data.getAll('servizi').join(', '));
+  }
+
+  try {
+    const response = await fetch(scriptURL, {
+      method: 'POST',
+      body: data,
+      mode: 'no-cors'
+    });
+    status.textContent = "Richiesta inviata con successo!";
+    form.reset();
+  } catch (error) {
+    status.textContent = "Errore nell'invio. Riprovare.";
+  }
+});
+</script>
