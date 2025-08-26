@@ -165,24 +165,52 @@
       ].join('\n');
 
       try {
-        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+        // Salvo la richiesta nel file JSON locale
+        const richiesta = {
+          id: Date.now(),
+          timestamp: new Date().toISOString(),
+          data: new Date().toLocaleString('it-IT'),
+          nome: name,
+          email: email,
+          telefono: telefono,
+          tipo: tipo,
+          messaggio: message
+        };
+        
+        // Leggo il file esistente o creo nuovo array
+        let richieste = [];
+        try {
+          const existingData = localStorage.getItem('richieste_hbtech');
+          if (existingData) {
+            richieste = JSON.parse(existingData);
+          }
+        } catch (e) {
+          console.log('Nessuna richiesta precedente trovata');
+        }
+        
+        // Aggiungo la nuova richiesta
+        richieste.push(richiesta);
+        
+        // Salvo nel localStorage
+        localStorage.setItem('richieste_hbtech', JSON.stringify(richieste, null, 2));
+        
+        // Creo e scarico il file JSON completo
+        const blob = new Blob([JSON.stringify(richieste, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = `richiesta_hbtech_${new Date().toISOString().split('T')[0]}.txt`;
+        link.download = 'richieste_hbtech.json';
         link.style.display = 'none';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
 
-        // Mostro messaggio di ringraziamento professionale
+        // Messaggio di ringraziamento semplificato
         responseDiv.innerHTML = `
           <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; margin-top: 20px;">
-            <h3 style="color: #27ae60; margin-bottom: 15px;">🎉 Grazie per la tua richiesta!</h3>
-            <p style="color: #333; margin-bottom: 10px;">Abbiamo ricevuto la tua richiesta e la stiamo elaborando.</p>
-            <p style="color: #666; font-size: 14px;">Ti contatteremo al più presto per fornirti tutte le informazioni richieste.</p>
-            <p style="color: #27ae60; font-weight: bold; margin-top: 15px;">HBTech Engineering & SRLs</p>
+            <h3 style="color: #27ae60; margin-bottom: 15px;">🎉 Grazie!</h3>
+            <p style="color: #333;">Ti contatteremo presto.</p>
           </div>
         `;
         responseDiv.className = 'success';
