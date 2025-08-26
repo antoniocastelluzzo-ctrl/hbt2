@@ -173,30 +173,42 @@
   <div id="form-response"></div>
 </form>
 <script>
-  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const form = e.target;
-    const data = new FormData(form);
     const responseDiv = document.getElementById('form-response');
-    responseDiv.textContent = 'Invio in corso...';
-    responseDiv.className = '';
-    try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbzgPEulHEAwLVridlKtorp3JW2B7WB4W7al9YkkGUY/dev', {
-        method: 'POST',
-        body: data
-      });
-      if (response.ok) {
-        responseDiv.textContent = 'Richiesta inviata e salvata con successo!';
-        responseDiv.className = 'success';
-        form.reset();
-      } else {
-        responseDiv.textContent = 'Si è verificato un errore durante l\'invio.';
-        responseDiv.className = 'error';
-      }
-    } catch (error) {
-      responseDiv.textContent = 'Errore di rete o servizio non disponibile.';
-      responseDiv.className = 'error';
-    }
+
+    const formData = new FormData(form);
+    const name = (formData.get('name') || '').toString().trim();
+    const email = (formData.get('email') || '').toString().trim();
+    const tipo = (formData.get('tipo') || '').toString().trim();
+    const message = (formData.get('message') || '').toString().trim();
+    const timestamp = new Date().toISOString();
+
+    const content = [
+      '----- RICHIESTA HBT -----',
+      `Data/Ora: ${timestamp}`,
+      `Nome e Cognome: ${name}`,
+      `Email: ${email}`,
+      `Tipo richiesta: ${tipo}`,
+      'Richiesta:',
+      message,
+      '--------------------------'
+    ].join('\n');
+
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'test.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    responseDiv.textContent = 'Dati salvati in test.txt';
+    responseDiv.className = 'success';
+    form.reset();
   });
 </script>
       <p>Email: <a href="mailto:info@hbtech.it">info@hbtech.it</a></p>
