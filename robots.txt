@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://${{ github.repository_owner }}.github.io/hbt2/sitemap.xml
+Sitemap: https://antoniocastelluzzo-ctrl.github.io/hbt2/sitemap.xml
 
 # Crawl-delay per evitare sovraccarico
 Crawl-delay: 1

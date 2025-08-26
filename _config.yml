@@ -1,7 +1,7 @@
 # Site settings
 title: HBTech - Riqualificazione Energetica
 description: Servizi professionali di riqualificazione energetica, efficientamento, impianti, isolamento, fotovoltaico, domotica, consulenza e ingegneria.
-url: "https://${{ github.repository_owner }}.github.io"
+url: "https://antoniocastelluzzo-ctrl.github.io"
 baseurl: "/hbt2"
 
 # Build settings
@@ -62,7 +62,6 @@ compress_html:
   endings: all
   profile: false
   blanklines: false
-  profile: false
   startings: [html, head, body]
 
 # Sitemap settings
@@ -89,7 +88,7 @@ author:
 social:
   name: HBTech
   links:
-    - https://github.com/${{ github.repository_owner }}/hbt2
+    - https://github.com/antoniocastelluzzo-ctrl/hbt2
 
 # Analytics (opzionale)
 analytics:
