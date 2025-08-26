@@ -38,11 +38,164 @@
     #cookie-banner button:hover {
       background: #219150;
     }
-    #cookie-banner a {
-      color: #27ae60;
-      text-decoration: underline;
-    }
-  </style>
+         #cookie-banner a {
+       color: #27ae60;
+       text-decoration: underline;
+     }
+
+     /* News Section Styles */
+     .news-section {
+       padding: 80px 20px;
+       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+     }
+     
+     .news-section h2 {
+       text-align: center;
+       color: #2c3e50;
+       margin-bottom: 50px;
+       font-size: 2.5rem;
+       font-weight: 700;
+     }
+     
+     .news-grid {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+       gap: 30px;
+       max-width: 1200px;
+       margin: 0 auto 50px auto;
+     }
+     
+     .news-card {
+       background: #fff;
+       border-radius: 15px;
+       padding: 25px;
+       box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+       transition: all 0.3s ease;
+       border-left: 5px solid #27ae60;
+     }
+     
+     .news-card:hover {
+       transform: translateY(-5px);
+       box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+     }
+     
+     .news-icon {
+       font-size: 2.5rem;
+       margin-bottom: 15px;
+       text-align: center;
+     }
+     
+     .news-content h3 {
+       color: #2c3e50;
+       margin-bottom: 10px;
+       font-size: 1.3rem;
+       font-weight: 600;
+       line-height: 1.3;
+     }
+     
+     .news-date {
+       color: #6c757d;
+       font-size: 0.9rem;
+       margin-bottom: 15px;
+       font-weight: 500;
+     }
+     
+     .news-content p {
+       color: #495057;
+       line-height: 1.6;
+       margin-bottom: 20px;
+     }
+     
+     .news-category {
+       display: inline-block;
+       padding: 6px 12px;
+       border-radius: 20px;
+       font-size: 0.8rem;
+       font-weight: 600;
+       text-transform: uppercase;
+       letter-spacing: 0.5px;
+     }
+     
+     .news-category.policy {
+       background: #e3f2fd;
+       color: #1976d2;
+     }
+     
+     .news-category.tech {
+       background: #f3e5f5;
+       color: #7b1fa2;
+     }
+     
+     .news-category.green {
+       background: #e8f5e8;
+       color: #388e3c;
+     }
+     
+     .news-category.regional {
+       background: #fff3e0;
+       color: #f57c00;
+     }
+     
+     .news-category.tips {
+       background: #e0f2f1;
+       color: #00796b;
+     }
+     
+     .news-cta {
+       text-align: center;
+       background: #fff;
+       padding: 40px;
+       border-radius: 15px;
+       box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+       max-width: 800px;
+       margin: 0 auto;
+     }
+     
+     .news-cta p {
+       color: #2c3e50;
+       font-size: 1.1rem;
+       margin-bottom: 25px;
+       line-height: 1.5;
+     }
+     
+     .news-cta-btn {
+       display: inline-block;
+       background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+       color: #fff;
+       padding: 15px 30px;
+       border-radius: 25px;
+       text-decoration: none;
+       font-weight: 600;
+       font-size: 1.1rem;
+       transition: all 0.3s ease;
+       box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+     }
+     
+     .news-cta-btn:hover {
+       transform: translateY(-2px);
+       box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+       background: linear-gradient(135deg, #229954 0%, #27ae60 100%);
+     }
+     
+     @media (max-width: 768px) {
+       .news-grid {
+         grid-template-columns: 1fr;
+         gap: 20px;
+       }
+       
+       .news-card {
+         padding: 20px;
+       }
+       
+       .news-section h2 {
+         font-size: 2rem;
+       }
+       
+       .news-cta {
+         padding: 30px 20px;
+       }
+     }
+   </style>
 </head>
 <body>
   <header>
@@ -131,9 +284,83 @@
           </p>
         </div>
 
-      </div>
-    </section>
-<section id="incentivi" class="incentivi">
+             </div>
+     </section>
+
+     <!-- SEZIONE NEWS SUSTAINABILITY -->
+     <section id="news" class="news-section">
+       <h2>📰 News & Aggiornamenti Sostenibilità</h2>
+       <div class="news-grid">
+         
+         <article class="news-card">
+           <div class="news-icon">🏗️</div>
+           <div class="news-content">
+             <h3>Ecobonus 2025: Nuove Opportunità</h3>
+             <p class="news-date">📅 15 Gennaio 2025</p>
+             <p>Il governo ha prorogato l'Ecobonus al 50% per interventi di riqualificazione energetica. Scopri come accedere ai nuovi incentivi per caldaie, pompe di calore e isolamento termico.</p>
+             <span class="news-category policy">📋 Normativa</span>
+           </div>
+         </article>
+
+         <article class="news-card">
+           <div class="news-icon">⚡</div>
+           <div class="news-content">
+             <h3>Pompe di Calore: Record di Installazioni</h3>
+             <p class="news-date">📅 12 Gennaio 2025</p>
+             <p>In Italia installate oltre 2 milioni di pompe di calore nel 2024. La tecnologia ibrida caldaia+pompa di calore diventa la scelta preferita per il riscaldamento sostenibile.</p>
+             <span class="news-category tech">🔬 Tecnologia</span>
+           </div>
+         </article>
+
+         <article class="news-card">
+           <div class="news-icon">🌞</div>
+           <div class="news-content">
+             <h3>Fotovoltaico: Batterie al Litio-Ferro</h3>
+             <p class="news-date">📅 10 Gennaio 2025</p>
+             <p>Le nuove batterie LFP (Litio-Ferro-Fosfato) garantiscono 15+ anni di vita e sono ideali per l'accumulo domestico. Prezzi in calo del 30% rispetto al 2023.</p>
+             <span class="news-category tech">🔬 Tecnologia</span>
+           </div>
+         </article>
+
+         <article class="news-card">
+           <div class="news-icon">🏠</div>
+           <div class="news-content">
+             <h3>Isolamento: Materiali Bio-Based</h3>
+             <p class="news-date">📅 8 Gennaio 2025</p>
+             <p>Fibre di legno, canapa e sughero: i nuovi materiali isolanti naturali riducono del 40% l'impronta carbonica rispetto ai tradizionali. Bonus fino al 65% disponibili.</p>
+             <span class="news-category green">🌱 Green Building</span>
+           </div>
+         </article>
+
+         <article class="news-card">
+           <div class="news-icon">📊</div>
+           <div class="news-content">
+             <h3>Puglia: Bando Domotica 2025</h3>
+             <p class="news-date">📅 5 Gennaio 2025</p>
+             <p>La Regione Puglia lancia un nuovo bando per sistemi domotici intelligenti. Contributi fino al 70% per termoregolazione, illuminazione e sicurezza automatizzata.</p>
+             <span class="news-category regional">🏛️ Regione Puglia</span>
+           </div>
+         </article>
+
+         <article class="news-card">
+           <div class="news-icon">💡</div>
+           <div class="news-content">
+             <h3>Consigli: Risparmia 30% sui Consumi</h3>
+             <p class="news-date">📅 3 Gennaio 2025</p>
+             <p>Programmazione intelligente della temperatura, isolamento delle tubazioni e manutenzione regolare: piccoli interventi che possono ridurre significativamente i costi energetici.</p>
+             <span class="news-category tips">💡 Consigli</span>
+           </div>
+         </article>
+
+       </div>
+       
+       <div class="news-cta">
+         <p>💬 <strong>Resta aggiornato!</strong> Richiedi la nostra newsletter mensile con le ultime novità su incentivi, tecnologie e normative.</p>
+         <a href="#contatti" class="news-cta-btn">📧 Iscriviti alla Newsletter</a>
+       </div>
+     </section>
+
+ <section id="incentivi" class="incentivi">
   <h2>Opportunità di Incentivo</h2>
   <div class="approfondimenti-list">
     
