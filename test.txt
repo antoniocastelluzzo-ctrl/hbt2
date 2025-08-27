@@ -1,7 +1,0 @@
------ RICHIESTA HBT -----
-Data/Ora:
-Nome e Cognome:
-Email:
-Tipo richiesta:
-Richiesta:
---------------------------

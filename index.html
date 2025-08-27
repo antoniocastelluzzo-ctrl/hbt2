@@ -2,476 +2,303 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HBTech: Servizi professionali di riqualificazione energetica, efficientamento, impianti, isolamento, fotovoltaico, domotica, consulenza e ingegneria.">
-  <meta name="keywords" content="riqualificazione energetica, efficientamento energetico, impianti termici, isolamento, fotovoltaico, domotica, ingegneria, HBTech">
-  <title>HBTech - 
-  Riqualificazione Energetica</title>
-  <link rel="stylesheet" href="styles_Version6.css">
-  <style>
-    /* Cookie Consent Banner Styles */
-    #cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(20,20,20,0.96);
-      color: #fff;
-      padding: 20px 10px 15px 10px;
-      z-index: 10000;
-      text-align: center;
-      font-size: 1rem;
-      display: none;
-    }
-    #cookie-banner button {
-      margin-left: 12px;
-      background: #27ae60;
-      color: #fff;
-      border: none;
-      padding: 10px 22px;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.2s;
-    }
-    #cookie-banner button:hover {
-      background: #219150;
-    }
-         #cookie-banner a {
-       color: #27ae60;
-       text-decoration: underline;
-     }
-
-     /* News Section Styles */
-     .news-section {
-       padding: 80px 20px;
-       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-     }
-     
-     .news-section h2 {
-       text-align: center;
-       color: #2c3e50;
-       margin-bottom: 50px;
-       font-size: 2.5rem;
-       font-weight: 700;
-     }
-     
-     .news-grid {
-       display: grid;
-       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-       gap: 30px;
-       max-width: 1200px;
-       margin: 0 auto 50px auto;
-     }
-     
-     .news-card {
-       background: #fff;
-       border-radius: 15px;
-       padding: 25px;
-       box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-       transition: all 0.3s ease;
-       border-left: 5px solid #27ae60;
-     }
-     
-     .news-card:hover {
-       transform: translateY(-5px);
-       box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-     }
-     
-     .news-icon {
-       font-size: 2.5rem;
-       margin-bottom: 15px;
-       text-align: center;
-     }
-     
-     .news-content h3 {
-       color: #2c3e50;
-       margin-bottom: 10px;
-       font-size: 1.3rem;
-       font-weight: 600;
-       line-height: 1.3;
-     }
-     
-     .news-date {
-       color: #6c757d;
-       font-size: 0.9rem;
-       margin-bottom: 15px;
-       font-weight: 500;
-     }
-     
-     .news-content p {
-       color: #495057;
-       line-height: 1.6;
-       margin-bottom: 20px;
-     }
-     
-     .news-category {
-       display: inline-block;
-       padding: 6px 12px;
-       border-radius: 20px;
-       font-size: 0.8rem;
-       font-weight: 600;
-       text-transform: uppercase;
-       letter-spacing: 0.5px;
-     }
-     
-     .news-category.policy {
-       background: #e3f2fd;
-       color: #1976d2;
-     }
-     
-     .news-category.tech {
-       background: #f3e5f5;
-       color: #7b1fa2;
-     }
-     
-     .news-category.green {
-       background: #e8f5e8;
-       color: #388e3c;
-     }
-     
-     .news-category.regional {
-       background: #fff3e0;
-       color: #f57c00;
-     }
-     
-     .news-category.tips {
-       background: #e0f2f1;
-       color: #00796b;
-     }
-     
-     .news-cta {
-       text-align: center;
-       background: #fff;
-       padding: 40px;
-       border-radius: 15px;
-       box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-       max-width: 800px;
-       margin: 0 auto;
-     }
-     
-     .news-cta p {
-       color: #2c3e50;
-       font-size: 1.1rem;
-       margin-bottom: 25px;
-       line-height: 1.5;
-     }
-     
-     .news-cta-btn {
-       display: inline-block;
-       background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
-       color: #fff;
-       padding: 15px 30px;
-       border-radius: 25px;
-       text-decoration: none;
-       font-weight: 600;
-       font-size: 1.1rem;
-       transition: all 0.3s ease;
-       box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
-     }
-     
-     .news-cta-btn:hover {
-       transform: translateY(-2px);
-       box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
-       background: linear-gradient(135deg, #229954 0%, #27ae60 100%);
-     }
-     
-           @media (max-width: 768px) {
-        .news-grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-        
-        .news-card {
-          padding: 20px;
-        }
-        
-        .news-section h2 {
-          font-size: 2rem;
-        }
-        
-        .news-cta {
-          padding: 30px 20px;
-        }
-      }
-
-      /* Contact Section Styles */
-      .contact-info {
-        text-align: center;
-        margin-bottom: 30px;
-      }
-      
-      .contact-info p {
-        margin: 15px 0;
-        font-size: 1.1rem;
-        color: #495057;
-      }
-      
-      .contact-info a {
-        color: #27ae60;
-        text-decoration: none;
-        font-weight: 600;
-      }
-      
-      .contact-info a:hover {
-        text-decoration: underline;
-      }
-      
-      .contact-cta {
-        text-align: center;
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        padding: 30px;
-        border-radius: 12px;
-        border: 1px solid #dee2e6;
-      }
-      
-      .contact-cta p {
-        color: #2c3e50;
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-      }
-      
-      .contact-btn {
-        display: inline-block;
-        background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
-        color: #fff;
-        padding: 15px 30px;
-        border-radius: 25px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
-      }
-      
-      .contact-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
-        background: linear-gradient(135deg, #229954 0%, #27ae60 100%);
-      }
-    </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HBtech - Main Contractor per Edilizia Sostenibile | Lecce, Brindisi, Taranto</title>
+  <meta name="description" content="HBtech: Main Contractor specializzato in edilizia sostenibile e comfort abitativo. Oltre 10 anni di esperienza in progettazione, direzione lavori e costruzioni chiavi in mano. Sostenibilità ambientale ed energie rinnovabili. Lecce, Brindisi, Taranto.">
+  <meta name="keywords" content="main contractor, edilizia sostenibile, costruzioni chiavi in mano, comfort abitativo, sostenibilità ambientale, energie rinnovabili, Lecce, Brindisi, Taranto">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
-<zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cmesah5ku00136mjyx1yzx14a'></zapier-interfaces-chatbot-embed>
-	<nav class="navbar">
-      <a class="logo" href="#">
-        <svg width="52" height="52" viewBox="0 0 52 52" aria-label="HBTech logo" xmlns="http://www.w3.org/2000/svg">
-          <rect width="52" height="52" rx="12" fill="#111"/>
-          <circle cx="26" cy="26" r="18" fill="#fff"/>
-          <path d="M13 34 L26 14 L39 34 Z" fill="#27ae60"/>
-          <text x="50%" y="65%" text-anchor="middle" fill="#111" font-size="13" font-family="Segoe UI, Arial" font-weight="bold">HB</text>
+    <div class="container">
+      <div class="header-nav">
+        <div class="language-switcher">
+          <a href="index.html" class="lang-link active">IT</a>
+          <span class="lang-separator">|</span>
+          <a href="index-en.html" class="lang-link">EN</a>
+        </div>
+      </div>
+      <div class="logo-claim">
+        <svg width="45" height="45" viewBox="0 0 45 45" fill="none" style="margin-bottom:8px;">
+          <circle cx="22.5" cy="22.5" r="21" stroke="#1a472a" stroke-width="3" fill="#fff"/>
+          <text x="50%" y="58%" text-anchor="middle" fill="#1a472a" font-size="18" font-family="Segoe UI, Arial" font-weight="bold" dy=".3em">HB</text>
         </svg>
-        <span class="logo-text">HBtech Engineering & SRLs</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#servizi">Servizi</a></li>
-        <li><a href="#incentivi">Incentivi</a></li>
-        <li><a href="#contatti">Contatti</a></li>
-      </ul>
-    </nav>
-    <section class="hero">
-      <h1>Servizi di riqualificazione energetica</h1>
-      <p>Comfort, risparmio e sostenibilità con i migliori servizi tecnologici e professionali.</p>
-      <a href="#contatti" class="cta">Richiedi una consulenza gratuita</a>
-    </section>
+        <span class="logo-hbtech">HBtech</span>
+        <span class="logo-engineering">Home Buildings Technology</span>
+      </div>
+      <p class="header-tagline">Main Contractor • Sostenibilità Ambientale • Comfort Abitativo</p>
+    </div>
   </header>
-
-  <main>
-    <section class="intro">
-      <h2>Perché scegliere la riqualificazione energetica?</h2>
-      <p>
-        HBTech offre servizi professionali integrati chiavi in mano  per la riqualificazione energetica per edifici civili e industriali: sostituzione e ottimizzazione di impianti termici, isolamento [...]
+  
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Main Contractor Certificato</div>
+      <h1>Il Main Contractor di riferimento per abitazioni sostenibili e confortevoli nel Salento</h1>
+      <p class="hero-lead">
+        <strong>Oltre 10 anni di esperienza</strong> come main contractor specializzato in progetti che coniugano 
+        <strong>sostenibilità ambientale</strong> e <strong>comfort abitativo</strong>. 
+        Gestiamo l'intero processo costruttivo: dalla progettazione ecosostenibile all'esecuzione chiavi in mano, 
+        con focus su <strong>benessere degli abitanti</strong> ed <strong>energie rinnovabili</strong>.
       </p>
-    </section>
-
-    <section id="servizi" class="services">
-      <h2>I Nostri Servizi</h2>
-      <div class="service-grid">
-
-        <div class="service-card">
-          <img src="images/caldaia.png" alt="Sostituzione e Ottimizzazione Impianti Termici" />
-          <h3>Sostituzione e Ottimizzazione Impianti Termici</h3>
-          <p>
-            Installazione di caldaie a condensazione, pompe di calore, sistemi ibridi e solare termico per la massima efficienza.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <img src="images/cappotto.png" alt="Isolamento Termico dell’Involucro" />
-          <h3>Isolamento Termico dell’Involucro</h3>
-          <p>
-            Cappotto termico, isolamento di pareti, coperture e serramenti ad alte prestazioni.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <img src="images/fotovoltaico.png" alt="Impianti Fotovoltaici e Sistemi di Accumulo" />
-          <h3>Impianti Fotovoltaici e Sistemi di Accumulo</h3>
-          <p>
-            Installazione di pannelli solari e batterie per l’autoconsumo.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <img src="images\domotica.png" alt="Building Automation e Controllo Smart" />
-          <h3>Building Automation e Controllo Smart</h3>
-          <p>
-            Soluzioni di domotica e regolazione intelligente per ambienti residenziali e aziendali.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <img src="images/consulenza.png" alt="Consulenza Energetica e Gestione Pratiche" />
-          <h3>Consulenza Energetica e Gestione Pratiche</h3>
-          <p>
-            Analisi, progettazione degli interventi e supporto pratiche per accedere agli incentivi.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <img src="images/ingegneria.png" alt="Servizi Professionali di Ingegneria" />
-          <h3>Servizi Professionali di Ingegneria</h3>
-          <p>
-            Progettazione integrata, direzione lavori, certificazioni e collaudi per la riqualificazione energetica.
-          </p>
-        </div>
-
-             </div>
-     </section>
-
-     <!-- SEZIONE NEWS SUSTAINABILITY -->
-     <section id="news" class="news-section">
-       <h2>📰 News & Aggiornamenti Sostenibilità</h2>
-       <div class="news-grid">
-         
-         <article class="news-card">
-           <div class="news-icon">🏗️</div>
-           <div class="news-content">
-             <h3>Ecobonus 2025: Nuove Opportunità</h3>
-             <p class="news-date">📅 15 Gennaio 2025</p>
-             <p>Il governo ha prorogato l'Ecobonus al 50% per interventi di riqualificazione energetica. Scopri come accedere ai nuovi incentivi per caldaie, pompe di calore e isolamento termico.</p>
-             <span class="news-category policy">📋 Normativa</span>
-           </div>
-         </article>
-
-         <article class="news-card">
-           <div class="news-icon">⚡</div>
-           <div class="news-content">
-             <h3>Pompe di Calore: Record di Installazioni</h3>
-             <p class="news-date">📅 12 Gennaio 2025</p>
-             <p>In Italia installate oltre 2 milioni di pompe di calore nel 2024. La tecnologia ibrida caldaia+pompa di calore diventa la scelta preferita per il riscaldamento sostenibile.</p>
-             <span class="news-category tech">🔬 Tecnologia</span>
-           </div>
-         </article>
-
-         <article class="news-card">
-           <div class="news-icon">🌞</div>
-           <div class="news-content">
-             <h3>Fotovoltaico: Batterie al Litio-Ferro</h3>
-             <p class="news-date">📅 10 Gennaio 2025</p>
-             <p>Le nuove batterie LFP (Litio-Ferro-Fosfato) garantiscono 15+ anni di vita e sono ideali per l'accumulo domestico. Prezzi in calo del 30% rispetto al 2023.</p>
-             <span class="news-category tech">🔬 Tecnologia</span>
-           </div>
-         </article>
-
-         <article class="news-card">
-           <div class="news-icon">🏠</div>
-           <div class="news-content">
-             <h3>Isolamento: Materiali Bio-Based</h3>
-             <p class="news-date">📅 8 Gennaio 2025</p>
-             <p>Fibre di legno, canapa e sughero: i nuovi materiali isolanti naturali riducono del 40% l'impronta carbonica rispetto ai tradizionali. Bonus fino al 65% disponibili.</p>
-             <span class="news-category green">🌱 Green Building</span>
-           </div>
-         </article>
-
-         <article class="news-card">
-           <div class="news-icon">📊</div>
-           <div class="news-content">
-             <h3>Puglia: Bando Domotica 2025</h3>
-             <p class="news-date">📅 5 Gennaio 2025</p>
-             <p>La Regione Puglia lancia un nuovo bando per sistemi domotici intelligenti. Contributi fino al 70% per termoregolazione, illuminazione e sicurezza automatizzata.</p>
-             <span class="news-category regional">🏛️ Regione Puglia</span>
-           </div>
-         </article>
-
-         <article class="news-card">
-           <div class="news-icon">💡</div>
-           <div class="news-content">
-             <h3>Consigli: Risparmia 30% sui Consumi</h3>
-             <p class="news-date">📅 3 Gennaio 2025</p>
-             <p>Programmazione intelligente della temperatura, isolamento delle tubazioni e manutenzione regolare: piccoli interventi che possono ridurre significativamente i costi energetici.</p>
-             <span class="news-category tips">💡 Consigli</span>
-           </div>
-         </article>
-
-       </div>
-       
-       <div class="news-cta">
-         <p>💬 <strong>Resta aggiornato!</strong> Richiedi la nostra newsletter mensile con le ultime novità su incentivi, tecnologie e normative.</p>
-         <a href="#contatti" class="news-cta-btn">📧 Iscriviti alla Newsletter</a>
-       </div>
-     </section>
-
- <section id="incentivi" class="incentivi">
-  <h2>Opportunità di Incentivo</h2>
-  <div class="approfondimenti-list">
-    
-    <div class="approfondimento-card">
-      <h3>Incentivi GSE</h3>
-      <p>Contributi e tariffe incentivanti per la produzione di energia da fonti rinnovabili (es. Conto Energia Termico, Scambio sul Posto, ecc.).</p>
-    </div>
-    <div class="approfondimento-card">
-      <h3>Incentivi Regionali e Locali</h3>
-      <p>Agevolazioni e bandi promossi da Regioni, come la Regione Puglia, Provincie e Comuni per interventi di efficientamento energetico, rinnovabili, domotica e altre misure di sostenibilità.</p>
-    </div>
-    <div class="approfondimento-card">
-      <h3>Altri Incentivi e Agevolazioni</h3>
-      <p>Finanziamenti agevolati, bandi nazionali e locali, contributi per famiglie e imprese, detrazioni per domotica, schermature solari, sistemi di accumulo e altre soluzioni innovative.</p>
-    </div>
-  </div>
-  <p>
-    HBTech ti supporta nell’individuare tutte le opportunità di incentivo applicabili al tuo caso, seguendo la gestione delle pratiche e l’accesso alle agevolazioni più vantaggiose a livello naz[...]
-  </p>
-</section>
-   
-
-    <section id="contatti" class="contact">
-      <h2>Contattaci</h2>
-      <div class="contact-info">
-        <p>📧 Email: <a href="mailto:info@hbtech.it">info@hbtech.it</a></p>
-        <p>📞 Telefono: <a href="tel:+390000000000">+39 000 000 0000</a></p>
-        <p>📍 Sede: Puglia, Italia</p>
+      <div class="hero-features">
+        <div class="feature">✓ Progettazione bioclimatica</div>
+        <div class="feature">✓ Massimo comfort termico</div>
+        <div class="feature">✓ Gestione incentivi verdi</div>
+        <div class="feature">✓ Consegna chiavi in mano</div>
       </div>
-      <div class="contact-cta">
-        <p>💬 <strong>Hai bisogno di una consulenza?</strong></p>
-        <a href="contatti.html" class="contact-btn">📝 Richiedi Consulenza</a>
+      <p class="zona-operativa">Lecce • Brindisi • Taranto e Province</p>
+      <a href="#contatti" class="cta-btn">Richiedi un preventivo</a>
+    </div>
+  </section>
+  
+  <section class="main-contractor">
+    <div class="container">
+      <h2>Cosa significa affidarsi a HBtech come Main Contractor</h2>
+      <div class="contractor-grid">
+        <div class="contractor-feature">
+          <div class="feature-icon">🏗️</div>
+          <h3>Gestione Totale del Progetto</h3>
+          <p>Coordiniamo tutte le fasi costruttive, dalle fondamenta alle finiture, garantendo qualità e rispetto dei tempi.</p>
+        </div>
+        <div class="contractor-feature">
+          <div class="feature-icon">📋</div>
+          <h3>Unico Interlocutore</h3>
+          <p>Semplifichiamo la tua esperienza: un solo referente per progettazione, autorizzazioni, esecuzione e consegna.</p>
+        </div>
+        <div class="contractor-feature">
+          <div class="feature-icon">💰</div>
+          <h3>Controllo Budget e Tempi</h3>
+          <p>Prezzi fissi concordati, cronoprogramma rispettato, nessuna sorpresa. La tua tranquillità è garantita.</p>
+        </div>
+        <div class="contractor-feature">
+          <div class="feature-icon">🌱</div>
+          <h3>Sostenibilità e Comfort</h3>
+          <p>Esperti in tecnologie green, comfort abitativo e soluzioni per il rispetto dell'ambiente.</p>
+        </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+  
+  <section class="servizi">
+    <div class="container">
+      <h2>I nostri servizi integrati</h2>
+      <div class="servizi-list">
+        <div class="servizio servizio-principale">
+          <div class="servizio-number">01</div>
+          <h3>Main Contractor Chiavi in Mano</h3>
+          <p>
+            <strong>Il nostro core business:</strong> gestione completa di costruzioni e ristrutturazioni sostenibili. 
+            Coordiniamo tutti i fornitori, le maestranze specializzate e le lavorazioni, dalla progettazione alla consegna finale.
+          </p>
+          <ul class="servizio-list">
+            <li>Gestione completa cantiere</li>
+            <li>Coordinamento fornitori certificati</li>
+            <li>Controllo qualità continuo</li>
+            <li>Garanzie post-vendita</li>
+          </ul>
+        </div>
+        
+        <div class="servizio">
+          <div class="servizio-number">02</div>
+          <h3>Progettazione Sostenibile</h3>
+          <p>
+            Sviluppiamo progetti innovativi per nuovi edifici ad alta efficienza energetica, 
+            massimizzando il <strong>comfort abitativo</strong> e l'integrazione di <strong>fonti rinnovabili</strong> 
+            nel rispetto dell'ambiente.
+          </p>
+        </div>
+        
+        <div class="servizio">
+          <div class="servizio-number">03</div>
+          <h3>Riqualificazione per il Comfort</h3>
+          <p>
+            Trasformiamo edifici esistenti in spazi confortevoli e sostenibili, 
+            migliorando il <strong>benessere abitativo</strong> e ottimizzando l'accesso agli 
+            <strong>incentivi verdi statali e regionali</strong>.
+          </p>
+        </div>
+        
+        <div class="servizio">
+          <div class="servizio-number">04</div>
+          <h3>Direzione Lavori Specializzata</h3>
+          <p>
+            Supervisione tecnica qualificata per garantire conformità normativa, 
+            sicurezza cantiere e rispetto delle specifiche per la <strong>sostenibilità ambientale</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="comfort-section">
+    <div class="container">
+      <h2>Sostenibilità e Comfort: la nostra filosofia</h2>
+      <div class="comfort-grid">
+        <div class="comfort-item">
+          <div class="comfort-icon">🌿</div>
+          <h3>Sostenibilità Ambientale</h3>
+          <p>Utilizziamo materiali eco-compatibili, tecnologie a basso impatto ambientale e soluzioni per l'efficienza energetica che rispettano l'ecosistema.</p>
+        </div>
+        <div class="comfort-item">
+          <div class="comfort-icon">🏠</div>
+          <h3>Comfort Abitativo</h3>
+          <p>Progettiamo spazi che garantiscono benessere termico, acustico e visivo, creando ambienti salubri e confortevoli per vivere meglio.</p>
+        </div>
+        <div class="comfort-item">
+          <div class="comfort-icon">⚡</div>
+          <h3>Energie Rinnovabili</h3>
+          <p>Integriamo sistemi fotovoltaici, pompe di calore e tecnologie innovative per ridurre i consumi e l'impatto ambientale.</p>
+        </div>
+        <div class="comfort-item">
+          <div class="comfort-icon">🔧</div>
+          <h3>Tecnologie Avanzate</h3>
+          <p>Implementiamo soluzioni domotiche, sistemi di ventilazione controllata e materiali performanti per il massimo comfort.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="expertise">
+    <div class="container">
+      <h2>La nostra expertise</h2>
+      <div class="expertise-grid">
+        <div class="expertise-item">
+          <strong>10+</strong>
+          <span>anni di esperienza</span>
+        </div>
+        <div class="expertise-item">
+          <strong>100+</strong>
+          <span>progetti completati</span>
+        </div>
+        <div class="expertise-item">
+          <strong>3</strong>
+          <span>province di operatività</span>
+        </div>
+        <div class="expertise-item">
+          <strong>95%</strong>
+          <span>clienti soddisfatti</span>
+        </div>
+      </div>
+      
+      <div class="specializations">
+        <h3>Specializzazioni tecniche</h3>
+        <div class="spec-tags">
+          <span class="tag">Sostenibilità Ambientale</span>
+          <span class="tag">Comfort Abitativo</span>
+          <span class="tag">Energie Rinnovabili</span>
+          <span class="tag">Efficienza Energetica</span>
+          <span class="tag">Bioedilizia</span>
+          <span class="tag">Superbonus 110%</span>
+          <span class="tag">Sismabonus</span>
+          <span class="tag">Ecobonus</span>
+          <span class="tag">NZEB Buildings</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta-alt">
+    <div class="container">
+      <h3>Pronto per il tuo progetto sostenibile?</h3>
+      <p>Contattaci per una consulenza gratuita e scopri come possiamo realizzare la tua casa ideale, confortevole e rispettosa dell'ambiente.</p>
+    </div>
+  </section>
+  
+  <section class="contatti" id="contatti">
+    <div class="container">
+      <h2>Richiedi un preventivo gratuito</h2>
+      <div class="contact-wrapper">
+        <form class="contact-form" method="POST" action="mailto:info@hbtech.it">
+          <div class="form-section">
+            <h4>Dati di contatto</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Nome e Cognome*</label>
+                <input type="text" id="nome" name="nome" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefono">Telefono*</label>
+                <input type="tel" id="telefono" name="telefono" required>
+              </div>
+              <div class="form-group">
+                <label for="citta">Città*</label>
+                <select id="citta" name="citta" required>
+                  <option value="">Seleziona città</option>
+                  <option value="Lecce">Lecce</option>
+                  <option value="Brindisi">Brindisi</option>
+                  <option value="Taranto">Taranto</option>
+                  <option value="Altra provincia">Altra provincia</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-section">
+            <h4>Il tuo progetto</h4>
+            <div class="form-group">
+              <label for="tipo-progetto">Tipo di progetto*</label>
+              <select id="tipo-progetto" name="tipo-progetto" required>
+                <option value="">Seleziona tipo</option>
+                <option value="Nuova costruzione">Nuova costruzione</option>
+                <option value="Ristrutturazione completa">Ristrutturazione completa</option>
+                <option value="Riqualificazione energetica">Riqualificazione energetica</option>
+                <option value="Miglioramento comfort">Miglioramento comfort abitativo</option>
+                <option value="Ampliamento">Ampliamento</option>
+                <option value="Altro">Altro</option>
+              </select>
+            </div>
+            
+            <label for="messaggio">Descrizione del progetto*</label>
+            <textarea id="messaggio" name="messaggio" required placeholder="Descrivi il tuo progetto: obiettivi di comfort e sostenibilità, tempistiche, budget indicativo..."></textarea>
+          </div>
+          
+          <button type="submit" class="cta-btn">Invia richiesta preventivo</button>
+        </form>
+        
+        <div class="contact-info">
+          <h4>Contatti diretti</h4>
+          <div class="contact-item">
+            <strong>Telefono:</strong><br>
+            +39 XXX XXX XXXX
+          </div>
+          <div class="contact-item">
+            <strong>Email:</strong><br>
+            info@hbtech.it
+          </div>
+          <div class="contact-item">
+            <strong>Zone operative:</strong><br>
+            Lecce, Brindisi, Taranto<br>
+            e relative province
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <footer>
-    <p>&copy; 2025 HBTech - Riqualificazione energetica | P.IVA: 00000000000</p>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <strong>HBtech – Home Buildings Technology</strong><br>
+          <span>Main Contractor per Edilizia Sostenibile e Comfort Abitativo</span>
+        </div>
+        <div class="footer-services">
+          <strong>Servizi:</strong> Progettazione • Direzione Lavori • Costruzioni Chiavi in Mano
+        </div>
+        <div class="footer-zone">
+          <strong>Zone operative:</strong> Lecce • Brindisi • Taranto e Province
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <small>© 2025 HBtech. Tutti i diritti riservati. | P.IVA: XXXXXXXXXX</small>
+      </div>
+    </div>
   </footer>
-
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-banner">
-    Utilizziamo cookie tecnici e, previo consenso, cookie di terze parti per migliorare l’esperienza utente. Proseguendo la navigazione o cliccando “Accetta”, acconsenti all’uso dei cookie. 
-    Leggi la nostra <a href="privacy.html" target="_blank">Privacy Policy</a>.
-    <button id="accept-cookies">Accetta</button>
-  </div>
-  <script>
-    // Show cookie banner if not previously accepted
-    window.addEventListener('DOMContentLoaded', function() {
-      if (!localStorage.getItem('privacyAccepted')) {
-        document.getElementById('cookie-banner').style.display = 'block';
-      }
-      document.getElementById('accept-cookies').onclick = function() {
-        localStorage.setItem('privacyAccepted', 'yes');
-        document.getElementById('cookie-banner').style.display = 'none';
-      };
-    });
-  </script>
 </body>
 </html>
